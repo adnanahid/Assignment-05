@@ -53,12 +53,12 @@
       </nav>
             <!-- button div -->
       <div class="text-center space-x-4">
-        <button class="btn bg-primaryColor px-8">Donation</button>
-        <button class="btn btn-outline px-8">History</button>
+        <button id="donationBtn" class="btn bg-primaryColor px-8">Donation</button>
+        <button id="historybtn" class="btn btn-outline px-8">History</button>
       </div>
     </header>
 
-    <main class="lg:max-w-screen-xl w-11/12 mx-auto">
+    <main id="mainBody" class="lg:max-w-screen-xl w-11/12 mx-auto">
       <section class="space-y-12">
         <!-- body section one  -->
         <div class="lg:flex border-2 space-y-5 border-black">
@@ -136,7 +136,7 @@
             />
             <button
               id="donateBtnTwo"
-              class="w-full bg-primaryColor text-xl font-bold py-2 rounded-md"
+              class="btn w-full bg-primaryColor text-xl font-bold py-2 rounded-md"
               onclick="my_modal_1.showModal()"
             >
               Donate Now
@@ -178,7 +178,7 @@
             />
             <button
               id="donateBtnThree"
-              class="w-full bg-primaryColor text-xl font-bold py-2 rounded-md"
+              class="btn w-full bg-primaryColor text-xl font-bold py-2 rounded-md"
               onclick="my_modal_1.showModal()"
             >
               Donate Now
@@ -187,9 +187,10 @@
         </div>
       </section>
     </main>
+
     <footer>
       <div id="history list" class="">
-
+        <p>Hi this is nahid</p>
       </div>
     </footer>
     <script src="js/utility.js"></script>

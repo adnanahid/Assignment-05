@@ -4,6 +4,10 @@ function getValue(id){
 function getInnerText(id){
   return parseFloat(document.getElementById(id).innerText);
 }
+function classes(id){
+  return document.getElementById(id).classList
+}
+
 
 function modal(id){
   if (id <= 0 || isNaN(id)) {
@@ -31,6 +35,24 @@ function modal(id){
     </div>`
   }
 }
+
+
+// Click History btn
+document.getElementById('historybtn').addEventListener('click',function(){
+  classes('mainBody').add('hidden')
+  classes('historybtn').add('bg-primaryColor')
+  classes('historybtn').remove('btn-outline')
+  classes('donationBtn').remove('bg-primaryColor')
+  classes('donationBtn').add('btn-outline')
+})
+// Click donation btn
+document.getElementById('donationBtn').addEventListener('click',function(){
+  classes('mainBody').remove('hidden')
+  classes('historybtn').remove('bg-primaryColor')
+  classes('historybtn').add('btn-outline')
+  classes('donationBtn').add('bg-primaryColor')
+})
+
 
 // divOne
 document.getElementById("donateBtnOne").addEventListener("click", function () {
