@@ -10,33 +10,33 @@ function classes(id) {
 
 
 function modal(id) {
-  if (id <= 0 || isNaN(id)) {
-    document.getElementById(
-      "modalContainer"
-    ).innerHTML = `<p>Insufficient Balance</p>
-     <div class="modal-action  mx-auto">
-        <form method="dialog" class="mx-auto">
-          <button class="btn">Close conformation</button>
-        </form>
-      </div>`;
-  } else {
+  if (id > 0 && !isNaN(id)) {
     document.getElementById(
       "my_modal_1"
     ).innerHTML = `<div id="modalContainer" class="modal-box text-center">
-        <h1 class="text-3xl font-bold">Congrates!</h3>
+        <h1 class="text-3xl font-bold">Congrats!</h1>
         <img src="asset/coin.png" alt="" class="mx-auto pt-5">
-        <p class="py-4">You Have Donate for Humankund</p>
+        <p class="py-4">You have donated to Humankund</p>
         <h3 class="text-xl font-bold">Successfully</h3>
-        <div class="modal-action  mx-auto">
-        <form method="dialog" class="mx-auto">
-          <!-- if there is a button in form, it will close the modal -->
-          <button class="btn">Close conformation</button>
-        </form>
-      </div>
+        <div class="modal-action mx-auto">
+          <form method="dialog" class="mx-auto">
+            <button class="btn">Close confirmation</button>
+          </form>
+        </div>
+      </div>`;
+  } else {
+    document.getElementById(
+      // "modalContainer"
+      "my_modal_1"
+    ).innerHTML = `
+    <div id="modalContainer" class="modal-box text-center">
+      <p>Insufficient Balance</p>
+      <form method="dialog" class="mx-auto">
+        <button class="btn">Close confirmation</button>
+      </form>
     </div>`;
   }
 }
-
 
 // Blog Btns function
 
@@ -63,6 +63,8 @@ document.getElementById("historybtn").addEventListener("click", function () {
   classes("historybtn").remove("btn-outline");
   classes("donationBtn").remove("bg-primaryColor");
   classes("donationBtn").add("btn-outline");
+
+
 });
 
 // Click donation btn
