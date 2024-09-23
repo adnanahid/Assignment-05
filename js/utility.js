@@ -5,6 +5,33 @@ function getInnerText(id){
   return parseFloat(document.getElementById(id).innerText);
 }
 
+function modal(id){
+  if (id <= 0 || isNaN(id)) {
+    document.getElementById('modalContainer').innerHTML = 
+    `<p>Insufficient Balance</p>
+     <div class="modal-action  mx-auto">
+        <form method="dialog" class="mx-auto">
+          <button class="btn">Close conformation</button>
+        </form>
+      </div>`
+  }
+  else{
+    document.getElementById('my_modal_1').innerHTML = 
+    `<div id="modalContainer" class="modal-box text-center">
+        <h1 class="text-3xl font-bold">Congrates!</h3>
+        <img src="asset/coin.png" alt="" class="mx-auto pt-5">
+        <p class="py-4">You Have Donate for Humankund</p>
+        <h3 class="text-xl font-bold">Successfully</h3>
+        <div class="modal-action  mx-auto">
+        <form method="dialog" class="mx-auto">
+          <!-- if there is a button in form, it will close the modal -->
+          <button class="btn">Close conformation</button>
+        </form>
+      </div>
+    </div>`
+  }
+}
+
 // divOne
 document.getElementById("donateBtnOne").addEventListener("click", function () {
   const amountoneValue = getInnerText('amountOne');
@@ -12,7 +39,9 @@ document.getElementById("donateBtnOne").addEventListener("click", function () {
   document.getElementById("amountOne").innerText = amountoneValue + inputOneValue;
   const topCornerBtn = getInnerText("mainBalance");
   document.getElementById("mainBalance").innerText = topCornerBtn - inputOneValue;
-  console.log(topCornerBtn);
+
+  modal(inputOneValue);
+  document.getElementById("inputOne").value = '';
 });
 
 // divTwo
@@ -22,7 +51,9 @@ document.getElementById("donateBtnTwo").addEventListener("click", function () {
     document.getElementById("amountTwo").innerText = amounttwoValue + inputTwoValue;
     const topCornerBtn = getInnerText("mainBalance");
     document.getElementById("mainBalance").innerText = topCornerBtn - inputTwoValue;
-    console.log(topCornerBtn);
+
+    modal(inputTwoValue);
+    document.getElementById("inputTwo").value = '';
 });
 
 //div Three
@@ -32,5 +63,7 @@ document.getElementById("donateBtnThree").addEventListener("click", function () 
     document.getElementById("amountThree").innerText = amounthreeValue + inputthreeValue;
     const topCornerBtn = getInnerText("mainBalance");
     document.getElementById("mainBalance").innerText = topCornerBtn - inputthreeValue;
-    console.log(topCornerBtn);
+
+    modal(inputthreeValue);
+    document.getElementById("inputThree").value = '';
   });
