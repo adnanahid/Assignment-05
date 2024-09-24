@@ -60,8 +60,6 @@ document.getElementById("donateBtnOne").addEventListener("click", function () {
   const amountoneValue = getInnerText("amountOne");
   const abc = getInnerText('mainBalance')
   const inputOneValue = getValue("inputOne");
-  console.log('mainBalance', getInnerText("mainBalance"));
-  console.log('input', inputOneValue);
   if (
     inputOneValue > 0 &&
     getInnerText("mainBalance") > getValue("inputOne")
@@ -87,8 +85,6 @@ document.getElementById("donateBtnOne").addEventListener("click", function () {
 
   modal(inputOneValue, abc);
   document.getElementById("inputOne").value = "";
-
-  console.log(typeof inputOneValue);
 });
 
 // divTwo
