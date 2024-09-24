@@ -9,8 +9,8 @@ function classes(id) {
   return document.getElementById(id).classList;
 }
 
-function modal(id) {
-  if (id > 0 && id < getInnerText("mainBalance")) {
+function modal(id, abc) {
+  if (id > 0 && id < abc) {
     document.getElementById(
       "my_modal_1"
     ).innerHTML = `<div id="modalContainer" class="modal-box text-center">
@@ -55,9 +55,13 @@ document.getElementById("donationBtn").addEventListener("click", function () {
 });
 
 // divOne
+
 document.getElementById("donateBtnOne").addEventListener("click", function () {
   const amountoneValue = getInnerText("amountOne");
+  const abc = getInnerText('mainBalance')
   const inputOneValue = getValue("inputOne");
+  console.log('mainBalance', getInnerText("mainBalance"));
+  console.log('input', inputOneValue);
   if (
     inputOneValue > 0 &&
     getInnerText("mainBalance") > getValue("inputOne")
@@ -81,7 +85,7 @@ document.getElementById("donateBtnOne").addEventListener("click", function () {
     document.getElementById("historyContainer").appendChild(historyList);
   }
 
-  modal(inputOneValue);
+  modal(inputOneValue, abc);
   document.getElementById("inputOne").value = "";
 
   console.log(typeof inputOneValue);
@@ -90,6 +94,7 @@ document.getElementById("donateBtnOne").addEventListener("click", function () {
 // divTwo
 document.getElementById("donateBtnTwo").addEventListener("click", function () {
   const amounttwoValue = getInnerText("amountTwo");
+  const abc = getInnerText('mainBalance')
   const inputTwoValue = getValue("inputTwo");
   if (
     inputTwoValue > 0 &&
@@ -114,7 +119,7 @@ document.getElementById("donateBtnTwo").addEventListener("click", function () {
     document.getElementById("historyContainer").appendChild(historyList);
   }
 
-  modal(inputTwoValue);
+  modal(inputTwoValue, abc);
   document.getElementById("inputTwo").value = "";
 });
 
@@ -123,6 +128,7 @@ document
   .getElementById("donateBtnThree")
   .addEventListener("click", function () {
     const amounthreeValue = getInnerText("amountThree");
+    const abc = getInnerText('mainBalance')
     const inputThreeValue = getValue("inputThree");
     if (
       inputThreeValue > 0 &&
@@ -148,6 +154,6 @@ document
       document.getElementById("historyContainer").appendChild(historyList);
     }
 
-    modal(inputThreeValue);
+    modal(inputThreeValue, abc);
     document.getElementById("inputThree").value = "";
   });
