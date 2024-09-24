@@ -9,10 +9,11 @@ function classes(id) {
 }
 
 function modal(id) {
-  if (id > 0 && !isNaN(id) ) {
+  if (id > 0 && !isNaN(id) && getInnerText('mainBalance') > getValue('inputOne')) {
     document.getElementById(
       "my_modal_1"
-    ).innerHTML = `<div id="modalContainer" class="modal-box text-center">
+    ).innerHTML = `
+       <div id="modalContainer" class="modal-box text-center">
           <h1 class="text-3xl font-bold">Congrats!</h1>
           <img src="asset/coin.png" alt="" class="mx-auto pt-5">
           <p class="py-4">You have donated to Humankund</p>
@@ -67,7 +68,7 @@ document.getElementById("donationBtn").addEventListener("click", function () {
 document.getElementById("donateBtnOne").addEventListener("click", function () {
   const amountoneValue = getInnerText("amountOne");
   const inputOneValue = getValue("inputOne");
-  if (inputOneValue > 0 && !isNaN(inputOneValue)) {
+  if (inputOneValue > 0 && !isNaN(inputOneValue) && getInnerText('mainBalance') > getValue('inputOne')) {
     document.getElementById("amountOne").innerText =
       amountoneValue + inputOneValue;
     const topCornerBtn = getInnerText("mainBalance");
@@ -95,7 +96,7 @@ document.getElementById("donateBtnOne").addEventListener("click", function () {
 document.getElementById("donateBtnTwo").addEventListener("click", function () {
   const amounttwoValue = getInnerText("amountTwo");
   const inputTwoValue = getValue("inputTwo");
-  if (inputTwoValue > 0 && !isNaN(inputTwoValue)) {
+  if (inputTwoValue > 0 && !isNaN(inputTwoValue) && getInnerText('mainBalance') > getValue('inputOne')) {
     document.getElementById("amountTwo").innerText =
       amounttwoValue + inputTwoValue;
     const topCornerBtn = getInnerText("mainBalance");
@@ -125,7 +126,7 @@ document
   .addEventListener("click", function () {
     const amounthreeValue = getInnerText("amountThree");
     const inputThreeValue = getValue("inputThree");
-    if (inputThreeValue > 0 && !isNaN(inputThreeValue)) {
+    if (inputThreeValue > 0 && !isNaN(inputThreeValue) && getInnerText('mainBalance') > getValue('inputOne')) {
       document.getElementById("amountThree").innerText =
         amounthreeValue + inputThreeValue;
       const topCornerBtn = getInnerText("mainBalance");

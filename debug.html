@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>debug</title>
     <!-- tailwind cdn -->
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -13,168 +13,60 @@
       rel="stylesheet"
       type="text/css"
     />
-
-    <!-- google font cdn-->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-      rel="stylesheet"
-    />
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              primaryColor: "#b4f461",
-              navbg: "#f9f7f3",
-            },
-          },
-        },
-      };
-    </script>
   </head>
   <body>
-    <header
-      class="mx-auto lg:max-w-full lg:space-y-8 sticky top-0 z-10 backdrop-blur-sm bg-navbg"
-    >
-      <nav class="">
-        <div class="navbar">
-          <div class="navbar-start">
-            <button id="blogbtn" class="btn bg-primaryColor px-7 text-xl">
-              Blog
-            </button>
-          </div>
-          <div class="navbar-center lg:flex hidden">
-            <img src="asset/logo.png" alt="" />
-            <a class="btn btn-ghost text-2xl font-bold">Donate bangladesh</a>
-          </div>
-          <div
-            class="navbar-end flex gap-2 items-center px-3 py-1 rounded-sm font-medium text-xl"
-          >
-            <img src="asset/coin.png" alt="" />
-            <span id="mainBalance">550000</span> BDT
-          </div>
-        </div>
-      </nav>
-      <!-- button div -->
-      <div class="text-center space-x-4">
-        <button
-          id="donationBtn"
-          class="btn bg-primaryColor text-lg font-bold px-8"
-        >
-          Donation
-        </button>
-        <button
-          id="historybtn"
-          class="btn btn-outline text-gray-700 text-lg font-bold px-8"
-        >
-          History
-        </button>
-      </div>
-    </header>
-    <div class="lg:flex space-y-5">
-      <div class="lg:w-5/12">
-        <img src="asset/noakhali.png" alt="" />
-      </div>
-      <div class="lg:w-7/12 space-y-7 lg:px-8">
-        <button
-          class="flex gap-2 items-center bg-gray-100 px-3 py-1 rounded-sm font-medium"
-        >
-          <img src="asset/coin.png" alt="" />
-          <span id="amountOne">0</span> BDT
-        </button>
-        <h3 id="divOneTitle" class="text-xl font-bold">
-          Donate for Flood at Noakhali, Bangladesh
-        </h3>
-        <p>
-          The recent floods in Noakhali have caused significant damage to homes
-          infrastructure. Your donation will help provide essential supplies and
-          to those affected by this disaster. Every contribution, big or small,
-          makes difference. Please join us in supporting the relief efforts and
-          making a positive impact on the lives of those in need.
-        </p>
-        <input
-          type="text"
-          id="inputOne"
-          class="pl-5 w-full py-3 rounded-md placeholder-gray-400 border-2 border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-color"
-          placeholder="Write Donation Amount"
-        />
+    <div class="flex justify-center mt-52">
+      <input
+        type="text"
+        id="numberInput"
+        class="py-3 rounded-md placeholder-gray-400 border-2 border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-color"
+        placeholder="Write Donation Amount"
+      />
 
-        <button
-          id="donateBtnOne"
-          class="w-full bg-primaryColor text-xl font-bold py-2 rounded-md btn"
-          onclick="my_modal_1.showModal()"
-        >
-          Donate Now
-        </button>
-        <div id="modalOff">
-          
+      <button
+        id="submitButton"
+        class="bg-red-500 text-xl font-bold py-2 rounded-md btn"
+      >
+        Donate Now
+      </button>
+    </div>
+
+    <!-- <input type="number" id="numberInput" placeholder="Enter a number" />
+    <button class="btn" id="submitButton">Submit</button> -->
+
+    <div id="modal" class="hidden">
+      <div id="modalContainer" class="modal-box text-center">
+        <h1 class="text-3xl font-bold">Congrats!</h1>
+        <img src="asset/coin.png" alt="" class="mx-auto pt-5" />
+        <p class="py-4">You have donated to Humankund</p>
+        <h3 class="text-xl font-bold">Successfully</h3>
+        <div class="modal-action mx-auto">
+          <form method="dialog" class="mx-auto">
+            <button id="closeModal" class="btn bg-primaryColor">
+              Close confirmation
+            </button>
+          </form>
         </div>
       </div>
     </div>
 
     <script>
-      function getValue(id) {
-        return parseFloat(document.getElementById(id).value);
-      }
-      function getInnerText(id) {
-        return parseFloat(document.getElementById(id).innerText);
-      }
-      function classes(id) {
-        return document.getElementById(id).classList;
-      }
+      const inputField = document.getElementById("numberInput");
+      const submitButton = document.getElementById("submitButton");
+      const modal = document.getElementById("modal");
+      const closeModalButton = document.getElementById("closeModal");
 
-      function modal(id) {
-        if (id > 0 && !isNaN(id)) {
-            document.getElementById("modalOff").innerHTML = `<dialog id="my_modal_1" class="modal"></dialog> `;
-          document.getElementById(
-            "my_modal_1"
-          ).innerHTML = `<div id="modalContainer" class="modal-box text-center">
-          <h1 class="text-3xl font-bold">Congrats!</h1>
-          <img src="asset/coin.png" alt="" class="mx-auto pt-5">
-          <p class="py-4">You have donated to Humankund</p>
-          <h3 class="text-xl font-bold">Successfully</h3>
-          <div class="modal-action mx-auto">
-            <form method="dialog" class="mx-auto">
-              <button class="btn bg-primaryColor">Close confirmation</button>
-            </form>
-          </div>
-        </div>`;
-        } else {
-            document.getElementById("modalOff").innerHTML = ` `;
-          alert("hi");
+      submitButton.addEventListener("click", function () {
+        if (inputField.value > 0 ) {
+          modal.style.display = "flex"; // Show the modal
+        } else  {
+          alert("Please enter a positive number.");
         }
-      }
-      // divOne
-      document
-        .getElementById("donateBtnOne")
-        .addEventListener("click", function () {
-          const amountoneValue = getInnerText("amountOne");
-          const inputOneValue = getValue("inputOne");
-          if (inputOneValue > 0 && !isNaN(inputOneValue)) {
-            document.getElementById("amountOne").innerText =
-              amountoneValue + inputOneValue;
-            const topCornerBtn = getInnerText("mainBalance");
-            document.getElementById("mainBalance").innerText =
-              topCornerBtn - inputOneValue;
-          }
+      });
 
-          modal(inputOneValue);
-          document.getElementById("inputOne").value = "";
-
-          // historyList functions in divOne
-          const historyList = document.createElement("div");
-          const divOneTitle = document.getElementById("divOneTitle").innerText;
-          historyList.innerHTML = `<div class="border-2 border-gray-300 rounded-lg">
-                <div class="p-5 space-y-3">
-                <p class="text-gray-700 text-xl lg:text-3xl font-bold">${inputOneValue} Taka is Donated for ${divOneTitle}</p>
-                <p class="text-gray-700 text-sm lg:text-xl font-medium"> Date: ${new Date().toString()}</p>
-                </div>
-            </div>
-            `;
-          document.getElementById("historyContainer").appendChild(historyList);
-        });
+      closeModalButton.addEventListener("click", () => {
+        modal.style.display = "none"; // Close the modal
+      });
     </script>
   </body>
 </html>
