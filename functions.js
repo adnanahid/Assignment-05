@@ -9,8 +9,8 @@ function classes(id) {
   return document.getElementById(id).classList;
 }
 
-function modal(id, abc) {
-  if (id > 0 && id < abc) {
+function modal(id, total_balance) {
+  if (id > 0 && id <= total_balance) {
     document.getElementById(
       "my_modal_1"
     ).innerHTML = `<div id="modalContainer" class="modal-box text-center">
@@ -58,15 +58,14 @@ document.getElementById("donationBtn").addEventListener("click", function () {
 
 document.getElementById("donateBtnOne").addEventListener("click", function () {
   const amountoneValue = getInnerText("amountOne");
-  const abc = getInnerText('mainBalance')
+  const total_balance = getInnerText("mainBalance");
   const inputOneValue = getValue("inputOne");
   if (
     inputOneValue > 0 &&
-    getInnerText("mainBalance") > getValue("inputOne")
+    getInnerText("mainBalance") >= getValue("inputOne")
   ) {
     document.getElementById("amountOne").innerText =
       amountoneValue + inputOneValue;
-    const total_balance = getInnerText("mainBalance");
     document.getElementById("mainBalance").innerText =
       total_balance - inputOneValue;
     document.getElementById("my_modal_1").showModal();
@@ -83,22 +82,21 @@ document.getElementById("donateBtnOne").addEventListener("click", function () {
     document.getElementById("historyContainer").appendChild(historyList);
   }
 
-  modal(inputOneValue, abc);
+  modal(inputOneValue, total_balance);
   document.getElementById("inputOne").value = "";
 });
 
 // divTwo
 document.getElementById("donateBtnTwo").addEventListener("click", function () {
   const amounttwoValue = getInnerText("amountTwo");
-  const abc = getInnerText('mainBalance')
+  const total_balance = getInnerText("mainBalance");
   const inputTwoValue = getValue("inputTwo");
   if (
     inputTwoValue > 0 &&
-    getInnerText("mainBalance") > getValue("inputTwo")
+    getInnerText("mainBalance") >= getValue("inputTwo")
   ) {
     document.getElementById("amountTwo").innerText =
       amounttwoValue + inputTwoValue;
-    const total_balance = getInnerText("mainBalance");
     document.getElementById("mainBalance").innerText =
       total_balance - inputTwoValue;
     document.getElementById("my_modal_1").showModal();
@@ -115,7 +113,7 @@ document.getElementById("donateBtnTwo").addEventListener("click", function () {
     document.getElementById("historyContainer").appendChild(historyList);
   }
 
-  modal(inputTwoValue, abc);
+  modal(inputTwoValue, total_balance);
   document.getElementById("inputTwo").value = "";
 });
 
@@ -124,15 +122,14 @@ document
   .getElementById("donateBtnThree")
   .addEventListener("click", function () {
     const amounthreeValue = getInnerText("amountThree");
-    const abc = getInnerText('mainBalance')
+    const total_balance = getInnerText("mainBalance");
     const inputThreeValue = getValue("inputThree");
     if (
       inputThreeValue > 0 &&
-      getInnerText("mainBalance") > getValue("inputThree")
+      getInnerText("mainBalance") >= getValue("inputThree")
     ) {
       document.getElementById("amountThree").innerText =
         amounthreeValue + inputThreeValue;
-      const total_balance = getInnerText("mainBalance");
       document.getElementById("mainBalance").innerText =
         total_balance - inputThreeValue;
       document.getElementById("my_modal_1").showModal();
@@ -150,6 +147,6 @@ document
       document.getElementById("historyContainer").appendChild(historyList);
     }
 
-    modal(inputThreeValue, abc);
+    modal(inputThreeValue, total_balance);
     document.getElementById("inputThree").value = "";
   });
