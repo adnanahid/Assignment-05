@@ -10,7 +10,7 @@ function classes(id) {
 }
 
 function modal(id) {
-  if (id < getInnerText("mainBalance") && id > 0 && !isNaN(id) && typeof id !== "number") {
+  if (id > 0 && id < getInnerText("mainBalance")) {
     document.getElementById(
       "my_modal_1"
     ).innerHTML = `<div id="modalContainer" class="modal-box text-center">
@@ -60,9 +60,7 @@ document.getElementById("donateBtnOne").addEventListener("click", function () {
   const inputOneValue = getValue("inputOne");
   if (
     inputOneValue > 0 &&
-    !isNaN(inputOneValue) &&
-    getInnerText("mainBalance") > getValue("inputOne") && 
-    typeof inputOneValue !== "number" 
+    getInnerText("mainBalance") > getValue("inputOne")
   ) {
     document.getElementById("amountOne").innerText =
       amountoneValue + inputOneValue;
@@ -85,6 +83,8 @@ document.getElementById("donateBtnOne").addEventListener("click", function () {
 
   modal(inputOneValue);
   document.getElementById("inputOne").value = "";
+
+  console.log(typeof inputOneValue);
 });
 
 // divTwo
@@ -93,9 +93,7 @@ document.getElementById("donateBtnTwo").addEventListener("click", function () {
   const inputTwoValue = getValue("inputTwo");
   if (
     inputTwoValue > 0 &&
-    !isNaN(inputTwoValue) &&
-    getInnerText("mainBalance") > getValue("inputTwo")&& 
-    typeof inputTwoValue !== "number"
+    getInnerText("mainBalance") > getValue("inputTwo")
   ) {
     document.getElementById("amountTwo").innerText =
       amounttwoValue + inputTwoValue;
@@ -128,9 +126,7 @@ document
     const inputThreeValue = getValue("inputThree");
     if (
       inputThreeValue > 0 &&
-      !isNaN(inputThreeValue) &&
-      getInnerText("mainBalance") > getValue("inputThree") && 
-      typeof inputThreeValue !== "number"
+      getInnerText("mainBalance") > getValue("inputThree")
     ) {
       document.getElementById("amountThree").innerText =
         amounthreeValue + inputThreeValue;
