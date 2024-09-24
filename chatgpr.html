@@ -1,15 +1,104 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <input type="text">
-  <button>doante</button>
-  <div>
-    <p>this is modal</p>
-  </div>
-</body>
-</html>
+function getValue(id) {
+  return parseFloat(document.getElementById(id).value);
+}
+
+function getInnerText(id) {
+  return parseFloat(document.getElementById(id).innerText);
+}
+
+function classes(id) {
+  return document.getElementById(id).classList;
+}
+
+function modal(amount) {
+  if (amount > 0 && !isNaN(amount) && getInnerText('mainBalance') > amount) {
+    document.getElementById("my_modal_1").innerHTML = `
+      <div id="modalContainer" class="modal-box text-center">
+        <h1 class="text-3xl font-bold">Congrats!</h1>
+        <img src="asset/coin.png" alt="" class="mx-auto pt-5">
+        <p class="py-4">You have donated to Humankind</p>
+        <h3 class="text-xl font-bold">Successfully</h3>
+        <div class="modal-action mx-auto">
+          <form method="dialog" class="mx-auto">
+            <button class="btn bg-primaryColor">Close confirmation</button>
+          </form>
+        </div>
+      </div>`;
+  } else {
+    document.getElementById("my_modal_1").innerHTML = `
+      <div id="modalContainer" class="modal-box text-center">
+        <h1 class="text-3xl font-bold">Invalid Amount!</h1>
+        <div class="modal-action mx-auto">
+          <form method="dialog" class="mx-auto">
+            <button class="btn bg-primaryColor">Close confirmation</button>
+          </form>
+        </div>
+      </div>`;
+  }
+}
+
+// Blog Button
+document.getElementById("blogbtn").addEventListener("click", function () {
+  window.location.href = "blog.html";
+});
+
+// History Button
+document.getElementById("historybtn").addEventListener("click", function () {
+  classes("mainBody").add("hidden");
+  classes("header").remove("hidden");
+  classes("historybtn").add("bg-primaryColor");
+  classes("historybtn").remove("btn-outline");
+  classes("donationBtn").remove("bg-primaryColor");
+  classes("donationBtn").add("btn-outline");
+});
+
+// Donation Button
+document.getElementById("donationBtn").addEventListener("click", function () {
+  classes("mainBody").remove("hidden");
+  classes("header").add("hidden");
+  classes("historybtn").remove("bg-primaryColor");
+  classes("historybtn").add("btn-outline");
+  classes("donationBtn").add("bg-primaryColor");
+  classes("donationBtn").remove("btn-outline");
+});
+
+// Donation function for each div
+function handleDonation(buttonId, inputId, amountId, titleId) {
+  document.getElementById(buttonId).addEventListener("click", function () {
+    const amountValue = getInnerText(amountId);
+    const inputValue = getValue(inputId);
+    const mainBalance = getInnerText("mainBalance");
+
+    if (inputValue > 0 && !isNaN(inputValue) && mainBalance > inputValue) {
+      // Update balance and donation amount
+      document.getElementById(amountId).innerText = amountValue + inputValue;
+      document.getElementById("mainBalance").innerText = mainBalance - inputValue;
+
+      // Update the modal with success
+      modal(inputValue);
+
+      // Clear input field
+      document.getElementById(inputId).value = "";
+
+      // Add to history
+      const historyList = document.createElement("div");
+      const donationTitle = document.getElementById(titleId).innerText;
+      historyList.innerHTML = `
+        <div class="border-2 border-gray-300 rounded-lg">
+          <div class="p-5 space-y-3">
+            <p class="text-gray-700 text-xl lg:text-3xl font-bold">${inputValue} Taka is Donated for ${donationTitle}</p>
+            <p class="text-gray-700 text-sm lg:text-xl font-medium"> Date: ${new Date().toString()}</p>
+          </div>
+        </div>`;
+      document.getElementById("historyContainer").appendChild(historyList);
+    } else {
+      // Handle invalid amount in modal
+      modal(inputValue);
+    }
+  });
+}
+
+// Handle donations for each section
+handleDonation("donateBtnOne", "inputOne", "amountOne", "divOneTitle");
+handleDonation("donateBtnTwo", "inputTwo", "amountTwo", "divTwoTitle");
+handleDonation("donateBtnThree", "inputThree", "amountThree", "divThreeTitle");

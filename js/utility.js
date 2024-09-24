@@ -9,11 +9,10 @@ function classes(id) {
 }
 
 function modal(id) {
-  if (id > 0 && !isNaN(id) && getInnerText('mainBalance') > getValue('inputOne')) {
+  if (id < getInnerText('mainBalance') && id > 0 && !isNaN(id)) {
     document.getElementById(
       "my_modal_1"
-    ).innerHTML = `
-       <div id="modalContainer" class="modal-box text-center">
+    ).innerHTML = `<div id="modalContainer" class="modal-box text-center">
           <h1 class="text-3xl font-bold">Congrats!</h1>
           <img src="asset/coin.png" alt="" class="mx-auto pt-5">
           <p class="py-4">You have donated to Humankund</p>
@@ -25,6 +24,7 @@ function modal(id) {
           </div>
         </div>`;
       } else {
+        alert('ji')
     document.getElementById(
       "my_modal_1"
     ).innerHTML = `<div id="modalContainer" class="modal-box text-center">
@@ -74,6 +74,7 @@ document.getElementById("donateBtnOne").addEventListener("click", function () {
     const topCornerBtn = getInnerText("mainBalance");
     document.getElementById("mainBalance").innerText =
       topCornerBtn - inputOneValue;
+      document.getElementById("my_modal_1").showModal();
   }
 
   modal(inputOneValue);
@@ -96,12 +97,13 @@ document.getElementById("donateBtnOne").addEventListener("click", function () {
 document.getElementById("donateBtnTwo").addEventListener("click", function () {
   const amounttwoValue = getInnerText("amountTwo");
   const inputTwoValue = getValue("inputTwo");
-  if (inputTwoValue > 0 && !isNaN(inputTwoValue) && getInnerText('mainBalance') > getValue('inputOne')) {
+  if (inputTwoValue > 0 && !isNaN(inputTwoValue) && getInnerText('mainBalance') > getValue('inputTwo')) {
     document.getElementById("amountTwo").innerText =
       amounttwoValue + inputTwoValue;
     const topCornerBtn = getInnerText("mainBalance");
     document.getElementById("mainBalance").innerText =
       topCornerBtn - inputTwoValue;
+      document.getElementById("my_modal_1").showModal();
   }
 
   modal(inputTwoValue);
@@ -126,12 +128,13 @@ document
   .addEventListener("click", function () {
     const amounthreeValue = getInnerText("amountThree");
     const inputThreeValue = getValue("inputThree");
-    if (inputThreeValue > 0 && !isNaN(inputThreeValue) && getInnerText('mainBalance') > getValue('inputOne')) {
+    if (inputThreeValue > 0 && !isNaN(inputThreeValue) && getInnerText('mainBalance') > getValue('inputThree')) {
       document.getElementById("amountThree").innerText =
         amounthreeValue + inputThreeValue;
       const topCornerBtn = getInnerText("mainBalance");
       document.getElementById("mainBalance").innerText =
         topCornerBtn - inputThreeValue;
+        document.getElementById("my_modal_1").showModal();
     }
 
     modal(inputThreeValue);
