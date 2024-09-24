@@ -24,17 +24,7 @@ function modal(id) {
             </div>
           </div>`;
   } else {
-    alert("ji");
-    document.getElementById(
-      "my_modal_1"
-    ).innerHTML = `<div id="modalContainer" class="modal-box text-center">
-            <h1 class="text-3xl font-bold">Invalid Amount!</h1>
-            <div class="modal-action mx-auto">
-              <form method="dialog" class="mx-auto">
-                <button class="btn bg-primaryColor">Close confirmation</button>
-              </form>
-            </div>
-          </div>`;
+    alert("Invalid Amount to Donate");
   }
 }
 
