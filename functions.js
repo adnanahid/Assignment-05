@@ -1,3 +1,4 @@
+// common function
 function getValue(id) {
   return parseFloat(document.getElementById(id).value);
 }

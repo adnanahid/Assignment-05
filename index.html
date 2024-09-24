@@ -27,7 +27,7 @@
           extend: {
             colors: {
               primaryColor: "#b4f461",
-              navbg: "#f9f7f3"
+              navbg: "#f9f7f3",
             },
           },
         },
@@ -35,32 +35,51 @@
     </script>
   </head>
 
-  <body class="space-y-12 lg:px-12 lg:mx-auto w-full lg:max-w-screen-2xl ">
-    <header class="mx-auto lg:max-w-full lg:space-y-8 sticky top-0 z-10 backdrop-blur-sm pb-3 lg:py-5 lg:mb-5">
+  <body class="space-y-12 lg:px-12 lg:mx-auto w-full lg:max-w-screen-2xl">
+    <header
+      class="mx-auto lg:max-w-full lg:space-y-8 sticky top-0 z-10 backdrop-blur-sm pb-3 lg:py-5 lg:mb-5"
+    >
       <nav>
         <div class="navbar">
           <div class="navbar-start">
-            <button id="blogbtn" class="btn bg-primaryColor px-7 text-xl">Blog</button>
+            <button id="blogbtn" class="btn bg-primaryColor px-7 text-xl">
+              Blog
+            </button>
           </div>
           <div class="navbar-center space-x-3 lg:flex hidden">
             <img src="asset/logo.png" alt="" />
             <a class="text-2xl font-bold">Donate bangladesh</a>
           </div>
-          <div class="navbar-end flex gap-2 items-center px-3 py-1 rounded-sm font-medium text-xl">
-              <img src="asset/coin.png" alt="" /> <span id="mainBalance">99999999</span> BDT
+          <div
+            class="navbar-end flex gap-2 items-center px-3 py-1 rounded-sm font-medium text-xl"
+          >
+            <img src="asset/coin.png" alt="" />
+            <span id="mainBalance">99999999</span> BDT
           </div>
         </div>
       </nav>
-            <!-- button div -->
+      <!-- button div -->
       <div class="text-center space-x-4">
-        <button id="donationBtn" class="btn bg-primaryColor text-lg font-bold px-8">Donation</button>
-        <button id="historybtn" class="btn btn-outline text-gray-700 text-lg font-bold px-8">History</button>
+        <button
+          id="donationBtn"
+          class="btn bg-primaryColor text-lg font-bold px-8"
+        >
+          Donation
+        </button>
+        <button
+          id="historybtn"
+          class="btn btn-outline text-gray-700 text-lg font-bold px-8"
+        >
+          History
+        </button>
       </div>
     </header>
 
     <main id="mainBody" class="lg:max-w-screen-xl w-11/12 mx-auto">
       <section class="space-y-12">
+
         <!-- body section one  -->
+
         <div class="lg:flex space-y-5">
           <div class="lg:w-5/12">
             <img src="asset/noakhali.png" alt="" />
@@ -96,9 +115,7 @@
             >
               Donate Now
             </button>
-            <dialog id="my_modal_1" class="modal">
-              
-            </dialog>
+            <dialog id="my_modal_1" class="modal"></dialog>
           </div>
         </div>
 
@@ -144,6 +161,7 @@
         </div>
 
         <!-- body section three  -->
+         
         <div class="lg:flex space-y-5">
           <div class="lg:w-5/12">
             <img src="asset/quota-protest.png" alt="" />
@@ -187,9 +205,7 @@
     </main>
 
     <footer id="header" class="hidden">
-      <div id="historyContainer" class=" space-y-8">
-        
-      </div>
+      <div id="historyContainer" class="space-y-8"></div>
     </footer>
     <script src="functions.js"></script>
   </body>
